@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-"""Run WikiText-2 perplexity + lm-eval zero-shot for one model (dense baseline)."""
 
 from __future__ import annotations
 

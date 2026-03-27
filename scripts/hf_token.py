@@ -1,5 +1,3 @@
-"""Load Hugging Face token from environment or project .env."""
-
 from __future__ import annotations
 
 import os

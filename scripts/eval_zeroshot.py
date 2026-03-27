@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-"""Zero-shot task accuracy via EleutherAI lm-eval (lm_eval.simple_evaluate)."""
-
 from __future__ import annotations
 
 import argparse

@@ -1,0 +1,44 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+env/
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Editor/OS
+.DS_Store
+.idea/
+.vscode/
+
+# Logs and temporary files
+logs/
+*.log
+tmp/
+temp/
+
+# Large experiment artifacts
+checkpoints/
+results/
+outputs/
+runs/
+wandb/
+
+# Hugging Face / model caches
+.cache/
+cache/
+hf_cache/

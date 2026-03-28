@@ -14,6 +14,16 @@ from hf_token import ensure_hf_token_in_env
 from lm_eval import simple_evaluate
 
 
+def _local_dir_has_tokenizer(model_path: str) -> bool:
+    p = Path(model_path)
+    if not p.is_dir():
+        return True
+    return any(
+        (p / name).is_file()
+        for name in ("tokenizer.json", "tokenizer.model", "tokenizer_config.json")
+    )
+
+
 def _json_safe(obj):
     if obj is None or isinstance(obj, (bool, int, float, str)):
         return obj
@@ -34,6 +44,12 @@ def main() -> None:
         description="Zero-shot benchmarks (default tasks match common LLM compression papers)."
     )
     p.add_argument("--model", type=str, required=True, help="HF model id or local path")
+    p.add_argument(
+        "--tokenizer",
+        type=str,
+        default="",
+        help="HF id for tokenizer when --model is weights-only (e.g. meta-llama/Llama-2-7b-hf).",
+    )
     p.add_argument(
         "--tasks",
         type=str,
@@ -65,10 +81,17 @@ def main() -> None:
 
     ensure_hf_token_in_env()
 
+    tok = args.tokenizer.strip()
+    if not tok and not _local_dir_has_tokenizer(args.model):
+        sys.exit(
+            "This model path has no tokenizer files. Pass e.g.\n"
+            "  --tokenizer meta-llama/Llama-2-7b-hf"
+        )
+
     tasks = [t.strip() for t in args.tasks.split(",") if t.strip()]
-    model_args = (
-        f"pretrained={args.model},dtype=float16,trust_remote_code=True"
-    )
+    model_args = f"pretrained={args.model},dtype=float16,trust_remote_code=True"
+    if tok:
+        model_args += f",tokenizer={tok}"
 
     results = simple_evaluate(
         model="hf",

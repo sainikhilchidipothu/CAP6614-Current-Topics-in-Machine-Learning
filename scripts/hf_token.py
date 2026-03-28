@@ -21,7 +21,6 @@ def load_hf_token() -> str | None:
 
 
 def ensure_hf_token_in_env() -> str | None:
-    """Set HF_TOKEN from .env if missing; return token or None."""
     token = load_hf_token()
     if token and not os.environ.get("HF_TOKEN"):
         os.environ["HF_TOKEN"] = token

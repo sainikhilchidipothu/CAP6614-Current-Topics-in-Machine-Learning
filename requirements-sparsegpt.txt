@@ -1,3 +1,0 @@
-# SparseGPT / llama.py (in addition to your main eval stack)
-protobuf>=4.21
-sentencepiece

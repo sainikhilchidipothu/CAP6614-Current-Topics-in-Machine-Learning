@@ -7,7 +7,7 @@ This project implements and experiments with **SparseGPT**, a one-shot pruning m
 **SparseGPT: Massive Language Models Can Be Accurately Pruned in One-Shot**  
 Frantar, E. and Alistarh, D. (ICML 2023)
 
-SparseGPT enables pruning of large transformer models (e.g., 100B+ parameters) to high sparsity levels (50–60%) without retraining, while maintaining minimal impact on model performance.
+SparseGPT enables pruning of large transformer models to high sparsity levels (50–60%) without retraining, while maintaining minimal impact on model performance.
 
 
 ## References

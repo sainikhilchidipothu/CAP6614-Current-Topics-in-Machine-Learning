@@ -1,6 +1,7 @@
 # CAP6614-Current-Topics-in-Machine-Learning-Spring-2026
 # SparseGPT: One-Shot LLM Pruning
 
+
 ## Overview
 This project implements and experiments with **SparseGPT**, a one-shot pruning method for large language models (LLMs) introduced in:
 

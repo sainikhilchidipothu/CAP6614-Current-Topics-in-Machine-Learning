@@ -126,7 +126,7 @@ def main() -> None:
     _log("Loading model weights (can take several minutes) ...")
     model = AutoModelForCausalLM.from_pretrained(
         args.model,
-        torch_dtype=dtype,
+        dtype=dtype,
         device_map="auto" if device == "cuda" else None,
         token=token,
     )
